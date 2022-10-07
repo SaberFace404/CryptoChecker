@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoChecker", "CryptoChecker\CryptoChecker.csproj", "{5261B031-BB99-4065-AC76-C8A0A74459DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5261B031-BB99-4065-AC76-C8A0A74459DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5261B031-BB99-4065-AC76-C8A0A74459DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5261B031-BB99-4065-AC76-C8A0A74459DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5261B031-BB99-4065-AC76-C8A0A74459DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {535EC89B-C586-462E-AB65-3236711B6DC9}
+	EndGlobalSection
+EndGlobal
