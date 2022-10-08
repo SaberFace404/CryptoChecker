@@ -13,6 +13,6 @@
         public double? PriceUsd { get; set; }
         public double? ChangePercent24Hr { get; set; }
         public double? Vwap24Hr { get; set; }
-        public string explorer { get; set; }
+        public string Explorer { get; set; }
     }
 }

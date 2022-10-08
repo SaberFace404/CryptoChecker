@@ -24,8 +24,6 @@ namespace CryptoChecker
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = new ApplicationViewModel();
         }
     }
 }
