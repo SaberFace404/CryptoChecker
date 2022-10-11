@@ -33,18 +33,36 @@ namespace CryptoChecker.Views
             targetCurrency.SelectedIndex = 1;
         }
 
-        private void sourceValue_TextChanged(object sender, TextChangedEventArgs e)
+        private void Calculate()
         {
-            var leftCurrency = _currencies.First(el => el.Symbol == sourceCurrency.Text);
-            var rightCurrency = _currencies.First(el => el.Symbol == targetCurrency.Text);
+            var leftCurrency = _currencies.FirstOrDefault(el => el.Symbol == sourceCurrency.Text);
+            var rightCurrency = _currencies.FirstOrDefault(el => el.Symbol == targetCurrency.Text);
             if (Double.TryParse(sourceValue.Text, out var leftNumber))
             {
-                targetValue.Text = (leftNumber * leftCurrency.PriceUsd / rightCurrency.PriceUsd).ToString();
+                targetValue.Text = (leftNumber * leftCurrency?.PriceUsd / rightCurrency?.PriceUsd).ToString();
+            }
+            else if(sourceValue.Text == "")
+            {
+                targetValue.Text = "";
             }
             else
             {
                 targetValue.Text = "NaN";
             }
+        }
+        private void sourceValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Calculate();
+        }
+
+        private void sourceCurrency_Selected(object sender, RoutedEventArgs e)
+        {
+            Calculate();
+        }
+
+        private void targetCurrency_Selected(object sender, RoutedEventArgs e)
+        {
+            Calculate();
         }
     }
 }

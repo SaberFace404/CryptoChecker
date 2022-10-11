@@ -14,15 +14,14 @@ namespace CryptoChecker.WebRequests
 {
     public static class CurencyRequests
     {
-        public static List<Currency> GetCurrencies()
+        public async static Task<List<Currency>> GetCurrencies()
         {
             HttpClient client = new HttpClient();
             var request = new HttpRequestMessage();
             request.RequestUri = new Uri("http://api.coincap.io/v2/assets");
             request.Method = HttpMethod.Get;
             request.Headers.Add("Accept", "application/json");
-            //TODO
-            HttpResponseMessage response = client.Send(request);
+            HttpResponseMessage response = await client.SendAsync(request);
 
             HttpContent responseContent = response.Content;
             var deserializedJson = JsonConvert.DeserializeObject<CurrencyListEntity>(responseContent.ReadAsStringAsync().Result);

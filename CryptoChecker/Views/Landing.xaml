@@ -6,40 +6,79 @@
       xmlns:local="clr-namespace:CryptoChecker.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Landing">
-
+      Title="Landing" Background="{DynamicResource BackgroundColor}" >
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style TargetType="ToggleButton">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"></RowDefinition>
             <RowDefinition Height="0.05*"></RowDefinition>
             <RowDefinition Height="*"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="0.2*"/>-->
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0">Search:</TextBlock>
+            <TextBox Grid.Column="1" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Stretch"/>
+            <!--<CheckBox Grid.Column="2" IsChecked="{Binding Top10Currencies , Mode=TwoWay}" Content="Top 10 currencies" />-->
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock>Symbol</TextBlock>
-            <TextBlock Grid.Column="1">USD price</TextBlock>
-            <TextBlock Grid.Column="2">Change % for 24h</TextBlock>
+            <TextBlock FontSize="12">Symbol</TextBlock>
+            <TextBlock Grid.Column="1" FontSize="12">USD price</TextBlock>
+            <TextBlock Grid.Column="2" FontSize="12">Change % for 24h</TextBlock>
         </Grid>
-        <ListBox x:Name="currenciesView" Grid.Row="1" HorizontalContentAlignment="Stretch" Grid.Column="0" ItemsSource="{Binding Currencies}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid UIElement.MouseLeftButtonDown="Grid_PreviewMouseDown">
+        <ListBox x:Name="currenciesView" Grid.Row="2" HorizontalContentAlignment="Stretch" Grid.Column="0" ItemsSource="{Binding SourceCollection}" 
+                 Background="{DynamicResource BackgroundColor}" VerticalAlignment="Stretch">
+            <ListBox.ItemTemplate >
+                <DataTemplate >
+                    <Grid UIElement.MouseLeftButtonDown="DoubleClick" Background="{DynamicResource BackgroundColor}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding Path=Symbol}"/>
-                        <TextBlock Grid.Column="1"  Text="{Binding Path=PriceUsd, StringFormat=N2}"/>
-                        <TextBlock Grid.Column="2"  Text="{Binding Path=ChangePercent24Hr, StringFormat=N2}"/>
+                        <TextBlock Grid.Column="0" Foreground="{DynamicResource TextColor}" Text="{Binding Path=Symbol}"/>
+                        <TextBlock Grid.Column="1" Foreground="{DynamicResource TextColor}"  Text="{Binding Path=PriceUsd, StringFormat=N2}"/>
+                        <TextBlock Grid.Column="2" Foreground="{DynamicResource TextColor}" Text="{Binding Path=ChangePercent24Hr, StringFormat=N2}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Grid.Row="2" Click="Button_Click">Coverter</Button>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Click="ConverterButtonClick">Coverter</Button>
+
+            <ToggleButton Grid.Column="1" x:Name="ThemeChangeButton"  
+                      IsChecked="False" Content="Change theme" Click="ThemeChandeClick" />
+
+        </Grid>
+
     </Grid>
 </Page>

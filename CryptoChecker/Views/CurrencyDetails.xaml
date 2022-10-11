@@ -6,13 +6,32 @@
       xmlns:local="clr-namespace:CryptoChecker.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CurrencyDetails">
-    <Grid Background="White">
+      Title="CurrencyDetails" >
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource TextColor}" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
+            <Setter Property="FontSize" Value="15" />
+        </Style>
+    </Page.Resources>
+    <Grid Background="{DynamicResource BackgroundColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-        <Button FontSize="15" Content="Back" Padding="3" Command="NavigationCommands.BrowseBack" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0"/>
+        <Button FontSize="15" Content="Back" Padding="3" Command="NavigationCommands.BrowseBack" BorderThickness="0" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" />
         <StackPanel Grid.Row="1" >
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="0 0 10 0">Id:</TextBlock>
@@ -30,42 +49,45 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">Supply:</TextBlock>
+                <TextBlock Margin="0 0 10 0">Available supply for trading:</TextBlock>
                 <TextBlock Text="{Binding Path=Supply}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">MasSuply:</TextBlock>
-                <TextBlock Text="{Binding Path=MasSuply}"/>
+                <TextBlock Margin="0 0 10 0">Total quantity of asset issued:</TextBlock>
+                <TextBlock Text="{Binding Path=MaxSupply, TargetNullValue='Not present' }"/>
             </StackPanel>
 
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">MarketCapUsd:</TextBlock>
+                <TextBlock Margin="0 0 10 0">Market capitalization in USD:</TextBlock>
                 <TextBlock Text="{Binding Path=MarketCapUsd, StringFormat=N2}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">VolumeUsd24Hr:</TextBlock>
+                <TextBlock Margin="0 0 10 0">Quantity of trading volume represented in USD over the last 24 hours:</TextBlock>
                 <TextBlock Text="{Binding Path=VolumeUsd24Hr, StringFormat=N2}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">PriceUsd:</TextBlock>
+                <TextBlock Margin="0 0 10 0">Price in USD:</TextBlock>
                 <TextBlock Text="{Binding Path=PriceUsd, StringFormat=N2}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">ChangePercent24Hr:</TextBlock>
+                <TextBlock Margin="0 0 10 0">The direction and value change in the last 24 hours:</TextBlock>
                 <TextBlock Text="{Binding Path=ChangePercent24Hr , StringFormat=N2}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 10 0">Vwap24Hr:</TextBlock>
+                <TextBlock Margin="0 0 10 0">Volume Weighted Average Price in the last 24 hours:</TextBlock>
                 <TextBlock Text="{Binding Path=Vwap24Hr, StringFormat=N2}"/>
             </StackPanel>
 
-            <Button Click="Button_Click">Learn more</Button>
+            <Button Click="LearnMore">Learn more</Button>
+           
         </StackPanel>
+        <!--<ToggleButton Grid.Row="3" x:Name="ThemeChangeButton" HorizontalAlignment="Center" 
+                      IsChecked="False" Content="Change theme" Click="ThemeChandeClick" />-->
     </Grid>
 </Page>

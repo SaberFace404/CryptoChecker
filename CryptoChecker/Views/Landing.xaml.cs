@@ -1,4 +1,5 @@
 ﻿using CryptoChecker.Models;
+using CryptoChecker.Themes;
 using CryptoChecker.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,18 +19,23 @@ using System.Windows.Shapes;
 
 namespace CryptoChecker.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для Landing.xaml
-    /// </summary>
+    
     public partial class Landing : Page
     {
         public Landing()
         {
             InitializeComponent();
-            DataContext = new ApplicationViewModel();
         }
 
-        private void Grid_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        public override async void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            var vm = new ApplicationViewModel();
+            await vm.FillCurrencies();
+            DataContext = vm;
+        }
+
+        private void DoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
             {
@@ -38,10 +44,20 @@ namespace CryptoChecker.Views
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ConverterButtonClick(object sender, RoutedEventArgs e)
         {
             var page = new Converter(currenciesView.ItemsSource.Cast<Currency>().ToList());
             this.NavigationService.Navigate(page);
         }
+
+        private void ThemeChandeClick (object sender, RoutedEventArgs e)
+        {
+            if (ThemeChangeButton.IsChecked == true)
+                ThemesController.SetTheme(ThemesController.ThemesType.Dark);
+            else 
+                ThemesController.SetTheme(ThemesController.ThemesType.Light);
+        }
+
+
     }
 }

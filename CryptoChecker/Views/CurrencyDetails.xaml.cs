@@ -13,11 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CryptoChecker.Themes;
 namespace CryptoChecker.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для CurrencyDetails.xaml
-    /// </summary>
     public partial class CurrencyDetails : Page
     {
         Currency _item;
@@ -26,9 +24,12 @@ namespace CryptoChecker.Views
             _item = item;
             InitializeComponent();
             DataContext = item;
+
+
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LearnMore(object sender, RoutedEventArgs e)
         {
             var sInfo = new System.Diagnostics.ProcessStartInfo(_item.Explorer)
             {
@@ -36,5 +37,8 @@ namespace CryptoChecker.Views
             };
             System.Diagnostics.Process.Start(sInfo);
         }
+
+        
+        
     }
 }
