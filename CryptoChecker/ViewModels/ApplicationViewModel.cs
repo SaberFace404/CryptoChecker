@@ -29,7 +29,7 @@ namespace CryptoChecker.ViewModels
         {
             currencies = await CurencyRequests.GetCurrencies();
             currenciesCollection.Source = currencies;
-            currenciesCollection.Filter += CurrenciesCollection_Filter;
+            currenciesCollection.Filter += CurrenciesCollectionFilter;
         }
         public ICollectionView SourceCollection
         {
@@ -53,30 +53,9 @@ namespace CryptoChecker.ViewModels
             }
         }
 
-        //public bool Top10Currencies
-        //{
-        //    get
-        //    {
-        //        return top10Currencies;
-        //    }
+      
 
-        //    set
-        //    {
-        //        top10Currencies = value;
-        //        if(value == true)
-        //        {
-        //            SourceCollection = currencies.Take(10).ToList();
-        //        }
-        //        else
-        //        {
-        //            SourceCollection = currencies;
-        //        }
-        //        this.currenciesCollection.View.Refresh();
-        //        OnPropertyChanged("Top10Currencies");
-        //    }
-        //}
-
-        private void CurrenciesCollection_Filter(object sender, FilterEventArgs e)
+        private void CurrenciesCollectionFilter(object sender, FilterEventArgs e)
         {
             if (string.IsNullOrEmpty(FilterText))
             {

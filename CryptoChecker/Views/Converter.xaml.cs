@@ -50,17 +50,17 @@ namespace CryptoChecker.Views
                 targetValue.Text = "NaN";
             }
         }
-        private void sourceValue_TextChanged(object sender, TextChangedEventArgs e)
+        private void sourceValueTextChanged(object sender, TextChangedEventArgs e)
         {
             Calculate();
         }
 
-        private void sourceCurrency_Selected(object sender, RoutedEventArgs e)
+        private void sourceCurrencySelected(object sender, RoutedEventArgs e)
         {
             Calculate();
         }
 
-        private void targetCurrency_Selected(object sender, RoutedEventArgs e)
+        private void targetCurrencySelected(object sender, RoutedEventArgs e)
         {
             Calculate();
         }

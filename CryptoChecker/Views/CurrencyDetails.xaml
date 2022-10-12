@@ -17,6 +17,7 @@
             <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
             <Setter Property="Foreground" Value="{DynamicResource TextColor}" />
             <Setter Property="BorderBrush" Value="{DynamicResource TextColor}" />
+            <Setter Property="FontSize" Value="15" />
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
@@ -87,7 +88,6 @@
             <Button Click="LearnMore">Learn more</Button>
            
         </StackPanel>
-        <!--<ToggleButton Grid.Row="3" x:Name="ThemeChangeButton" HorizontalAlignment="Center" 
-                      IsChecked="False" Content="Change theme" Click="ThemeChandeClick" />-->
+        
     </Grid>
 </Page>
