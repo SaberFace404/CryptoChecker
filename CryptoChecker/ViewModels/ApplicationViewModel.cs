@@ -17,7 +17,7 @@ namespace CryptoChecker.ViewModels
 
         private string filterText;
         private CollectionViewSource currenciesCollection;
-        //private bool top10Currencies = true;
+       
         private List<Currency> currencies { get; set; }
         public ApplicationViewModel()
         {

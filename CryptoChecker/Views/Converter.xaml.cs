@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace CryptoChecker.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для Converter.xaml
-    /// </summary>
+   
     public partial class Converter : Page
     {
         List<Currency> _currencies;
